@@ -10,7 +10,7 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var caixa1,caixa2,solo,pig,tronco,tronco2
 ,caixa3,caixa4,pig2,bird,back,troncofixo
-,slingshot,barranco;
+,slingshot,barranco,parede1,parede2,teto;
 var bg = 'sprites/bg.png'
 var gameState = 'sling';
 var score = 0;
@@ -42,7 +42,10 @@ pig2 = new Pig(700,280);
 tronco2 = new Tronco(700,270,250,PI/2);
 //troncofixo = new Tronco(100,100,100,PI/2);
 slingshot = new Slingshot(bird.body,{x:200,y:100});
-barranco = new Solo(90,350,300,150)
+barranco = new Solo(90,350,300,150);
+parede1 = new Solo(1,138,10,275) ;
+parede2 = new Solo(600,5,1300,10);
+teto = new Solo(1195,200,10,400);
 
 }
 
@@ -82,6 +85,9 @@ bird.display();
 //troncofixo.display();
 slingshot.display();
 barranco.display();
+parede1.display();
+parede2.display();
+teto.display();
 
 
 
@@ -101,7 +107,7 @@ slingshot.fly();
 
 }
 function keyPressed(){
-    if (keyCode === 32 && bird.body.speed < 1){
+    if (keyCode === 32 && bird.body.speed < 3){
      
         Matter.Body.setPosition(bird.body,{x:200,y:110});
         slingshot.prender(bird.body)
